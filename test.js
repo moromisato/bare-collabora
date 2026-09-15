@@ -21,3 +21,84 @@ test('markdown to html', async (t) => {
 
   t.pass()
 })
+
+test('drawing to pdf', async (t) => {
+  const tmp = await t.tmp()
+
+  const drawing = new Document(require.resolve('./test/fixtures/sample.fodg'))
+
+  drawing.saveAs(path.join(tmp, 'sample.pdf'))
+
+  t.pass()
+})
+
+test('drawing to png', async (t) => {
+  const tmp = await t.tmp()
+
+  const drawing = new Document(require.resolve('./test/fixtures/sample.fodg'))
+
+  drawing.saveAs(path.join(tmp, 'sample.png'))
+
+  t.pass()
+})
+
+test('drawing to svg', async (t) => {
+  const tmp = await t.tmp()
+
+  const drawing = new Document(require.resolve('./test/fixtures/sample.fodg'))
+
+  drawing.saveAs(path.join(tmp, 'sample.svg'))
+
+  t.pass()
+})
+
+test('spreadsheet to pdf', async (t) => {
+  const tmp = await t.tmp()
+
+  const spreadsheet = new Document(require.resolve('./test/fixtures/sample.fods'))
+
+  spreadsheet.saveAs(path.join(tmp, 'sample.pdf'))
+
+  t.pass()
+})
+
+test('presentation to pdf', async (t) => {
+  const tmp = await t.tmp()
+
+  const presentation = new Document(require.resolve('./test/fixtures/sample.fodp'))
+
+  presentation.saveAs(path.join(tmp, 'sample.pdf'))
+
+  t.pass()
+})
+
+test('drawing to jpg', async (t) => {
+  const tmp = await t.tmp()
+
+  const drawing = new Document(require.resolve('./test/fixtures/sample.fodg'))
+
+  drawing.saveAs(path.join(tmp, 'sample.jpg'))
+
+  t.pass()
+})
+
+test('spreadsheet to txt', async (t) => {
+  const tmp = await t.tmp()
+
+  const spreadsheet = new Document(require.resolve('./test/fixtures/sample.fods'))
+
+  spreadsheet.saveAs(path.join(tmp, 'sample.txt'))
+
+  t.pass()
+})
+
+test('csv to pdf', async (t) => {
+  const tmp = await t.tmp()
+
+  // Comma separated, double quoted, UTF-8; the import filter asks otherwise
+  const csv = new Document(require.resolve('./test/fixtures/sample.csv'), '44,34,76')
+
+  csv.saveAs(path.join(tmp, 'sample.pdf'))
+
+  t.pass()
+})
